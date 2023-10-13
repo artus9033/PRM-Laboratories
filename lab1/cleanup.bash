@@ -12,3 +12,4 @@ git restore . # restore original lab contents
 docker stop $(docker ps -a -q) # stop all running containers
 docker container prune -f # stop all stopped containers
 docker image rm http-server ros-turtle # remove result images built by students during the lab
+history -c && history -w # clear terminal history
