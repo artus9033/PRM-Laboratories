@@ -12,15 +12,15 @@ if __name__ == '__main__':
     rospy.loginfo(
         f"[prm_publisher_node] przestrzeń nazw tego węzła: {rospy.get_namespace()}")
 
-    # TODO-PRM: 4a) inicjalizacja Publishera
+    # TODO-PRM: 2a) inicjalizacja Publishera
     pub = rospy.Publisher(name=..., data_class=..., queue_size=10)
     # jedna instancja dla uniknięcia tworzenia nowego wystąpienia co iterację
     msg = String()
 
     while not rospy.is_shutdown():
-        # TODO-PRM: 4a) aktualizacja danych poniżej
+        # TODO-PRM: 2a) aktualizacja danych poniżej
         ...
-        # TODO-PRM: 4a) opublikowanie wiadomości
+        # TODO-PRM: 2a) opublikowanie wiadomości
         ...
 
         sleep(2)
