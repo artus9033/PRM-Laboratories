@@ -7,9 +7,8 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
-cd ~/Desktop/PRM-Laboratories/lab2
+cd ~/Desktop/PRM-Laboratories/lab3
 git restore . # restore original lab contents
 docker stop $(docker ps -a -q) # stop all running containers
 docker container prune -f # remove all stopped containers
-docker image rm prm-ros-setup # remove result images built by students during the lab
 history -c && history -w # clear terminal history

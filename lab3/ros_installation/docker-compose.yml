@@ -1,0 +1,23 @@
+version: "2"
+services:
+  TODO: # TODO-PRM: 4) ustaw nazwę hosta tego serwisu na core
+    build: .
+    container_name: core
+    command:
+      -  # TODO-PRM: 4) uruchom ROS core: roscore
+
+  publisher:
+    build: .
+    container_name: publisher
+    environment:
+      - "ROS_HOSTNAME=publisher"
+      - "ROS_MASTER_URI=http://TODO:11311" # TODO-PRM: 4) zmień nazwę hosta z TODO na nazwę hosta kontenera z roscore
+    command: # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun rosrun publisher_node.py z pakietu prm_pkg
+
+  subscriber:
+    build: .
+    container_name: subscriber
+    environment:
+      - "ROS_HOSTNAME=subscriber"
+      - "ROS_MASTER_URI=http://TODO:11311" # TODO-PRM: 4) zmień nazwę hosta z TODO na nazwę hosta kontenera z roscore
+    command: # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun rosrun subscriber_node.py z pakietu prm_pkg
