@@ -8,5 +8,5 @@ else
     sudo apt install -y cloud-guest-utils
 fi
 
-growpart /dev/sda 3
-resize2fs /dev/sda3
+sudo growpart /dev/sda 3
+sudo resize2fs /dev/sda3

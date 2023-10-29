@@ -8,6 +8,7 @@ then
 fi
 
 cd ~/Desktop/PRM-Laboratories/lab3
+sudo rm -rf ../lab2/container_fs/ # clear container volume contents
 git restore . # restore original lab contents
 docker stop $(docker ps -a -q) # stop all running containers
 docker container prune -f # remove all stopped containers
