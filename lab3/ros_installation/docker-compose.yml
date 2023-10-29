@@ -1,23 +1,50 @@
 version: "2"
+
+networks:
+  ros:
+    driver: bridge
+
 services:
-  TODO: # TODO-PRM: 4) ustaw nazwę hosta tego serwisu na core
+  TODO: # TODO-PRM: 4) ustaw nazwę tego serwisu na ros-master
     build: .
-    container_name: core
-    command:
-      -  # TODO-PRM: 4) uruchom ROS core: roscore
+    container_name: ros-master
+    restart: unless-stopped
+    networks:
+      - TODO # TODO-PRM: 4) podepnij kontener do wspólnej sieci z pozostałymi; wskazówka: spójrz na listę sieci w kluczu "networks"
+    command: stdbuf -o L roscore
+    stdin_open: true
+    tty: true
 
   publisher:
     build: .
+    depends_on:
+      - TODO # TODO-PRM: 4) zmień nazwę usługi, od której zależy obecna, z TODO na nazwę usługi z roscore
     container_name: publisher
+    volumes:
+      - ../container_fs:/root/prm
     environment:
       - "ROS_HOSTNAME=publisher"
       - "ROS_MASTER_URI=http://TODO:11311" # TODO-PRM: 4) zmień nazwę hosta z TODO na nazwę hosta kontenera z roscore
-    command: # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun rosrun publisher_node.py z pakietu prm_pkg
+    command: stdbuf -o L /root/prm/prm_ws/devel/env.sh rosrun ... ... # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun publisher_node.py z pakietu prm_pkg
+    networks:
+      - TODO # TODO-PRM: 4) podepnij kontener do wspólnej sieci z pozostałymi; wskazówka: spójrz na listę sieci w kluczu "networks"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
 
   subscriber:
     build: .
+    depends_on:
+      - TODO # TODO-PRM: 4) zmień nazwę usługi, od której zależy obecna, z TODO na nazwę usługi z roscore
     container_name: subscriber
+    volumes:
+      - ../container_fs:/root/prm
     environment:
       - "ROS_HOSTNAME=subscriber"
       - "ROS_MASTER_URI=http://TODO:11311" # TODO-PRM: 4) zmień nazwę hosta z TODO na nazwę hosta kontenera z roscore
-    command: # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun rosrun subscriber_node.py z pakietu prm_pkg
+    command: stdbuf -o L /root/prm/prm_ws/devel/env.sh rosrun ... ... # TODO-PRM: 4) uruchom za pomocą narzędzia rosrun subscriber_node.py z pakietu prm_pkg
+    networks:
+      - TODO # TODO-PRM: 4) podepnij kontener do wspólnej sieci z pozostałymi; wskazówka: spójrz na listę sieci w kluczu "networks"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true

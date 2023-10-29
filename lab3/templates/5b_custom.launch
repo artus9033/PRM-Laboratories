@@ -1,0 +1,5 @@
+<launch>
+    <node name="prm_custom_publisher_node" pkg="prm_pkg" type="custom_publisher_node.py" output="screen" />
+    
+    <node name="prm_custom_subscriber_node" pkg="prm_pkg" type="custom_subscriber_node.py" output="screen" />
+</launch>

@@ -1,5 +1,5 @@
 <launch>
-    <node name="prm_publisher_node" pkg="prm_test_pkg" type="publisher_node.py" output="screen" />
+    <node name="prm_publisher_node" pkg="prm_pkg" type="publisher_node.py" output="screen" />
     
-    <node name="prm_subscriber_node" pkg="prm_test_pkg" type="subscriber_node.py" output="screen" />
+    <node name="prm_subscriber_node" pkg="prm_pkg" type="subscriber_node.py" output="screen" />
 </launch>

@@ -4,6 +4,7 @@
 import rospy
 from std_msgs.msg import String  # import wiadomości String z pakietu std_msgs
 from datetime import datetime
+import socket
 import threading
 
 SUB_TOPIC_NAME = ...  # TODO-PRM: 2b) inicjalizacja Subscribera - nazwa tematu
@@ -20,6 +21,10 @@ if __name__ == '__main__':
 
     rospy.loginfo(
         f"[prm_subscriber_node] przestrzeń nazw tego węzła: {rospy.get_namespace()}")
+
+    hostname, _, ipAddresses = socket.gethostbyname_ex(socket.getfqdn())
+    rospy.loginfo(
+        f"[prm_publisher_node] nazwa hosta: {hostname}, adres{'y' if len(ipAddresses) > 1 else ''} IP środowiska węzła: {', '.join(ipAddresses)}")
 
     rospy.loginfo(
         f"[prm_subscriber_node] główny wątek węzła: {threading.get_ident()}")
